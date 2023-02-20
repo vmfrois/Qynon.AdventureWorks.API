@@ -1,0 +1,272 @@
+{
+	"info": {
+		"_postman_id": "6fdec8e7-62e2-4e7b-a23b-e9962b24ab87",
+		"name": "Qynon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18913888"
+	},
+	"item": [
+		{
+			"name": "Competidor",
+			"item": [
+				{
+					"name": "Retorna todos os competidores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/competidor/getAll",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"competidor",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retorna um competidor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/competidor/{{id}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"competidor",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adiciona um competidor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"string\",\r\n    \"sexo\": \"char\",\r\n    \"TemperaturaMediaCorpo\": 0.0,\r\n    \"peso\": 0.0,\r\n    \"altura\": 0.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/competidor/insert",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"competidor",
+								"insert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualiza um competidor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": {{id}},\r\n    \"nome\": \"string\",\r\n    \"sexo\": \"char\",\r\n    \"TemperaturaMediaCorpo\": 0.0,\r\n    \"peso\": 0.0,\r\n    \"altura\": 0.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/competidor/{{Id}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"competidor",
+								"{{Id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar competidor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/competidor/{{id}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"competidor",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PistaCorrida",
+			"item": [
+				{
+					"name": "Retorna todas as pistas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/PistaCorrida",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"PistaCorrida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retorna uma pista",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/PistaCorrida/get/{{id}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"PistaCorrida",
+								"get",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inserir uma pista",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/PistaCorrida/insert",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"PistaCorrida",
+								"insert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualiza uma pista",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/PistaCorrida/update/{{id}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"PistaCorrida",
+								"update",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleta uma pista",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/PistaCorrida/delete/{{id}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"PistaCorrida",
+								"delete",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HistoricoCorrida",
+			"item": []
+		}
+	]
+}
