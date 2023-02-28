@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Qynon.AdventureWorks.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Qynon.AdventureWorks.Infrastructure.Data.EfCore
@@ -17,6 +18,15 @@ namespace Qynon.AdventureWorks.Infrastructure.Data.EfCore
         public async Task<IEnumerable<Competidor>> GetAllAsync()
         {
             return await _context.Competidores.ToListAsync();
+        }
+
+        public async Task<IEnumerable<Competidor>> GetCompetidoresSemCorrida()
+        {
+            var competidores = await _context.Competidores
+                                            .Where(c => !c.HistoricoCorridas.Any())
+                                            .ToListAsync();
+
+            return competidores;
         }
 
         public async Task<Competidor> GetById(int id)

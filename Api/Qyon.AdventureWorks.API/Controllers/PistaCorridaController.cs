@@ -31,6 +31,20 @@ namespace Qyon.AdventureWorks.API.Controllers
             return Ok(pistas);
         }
 
+        [HttpGet]
+        [Route("pistasUtilizadas")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> GetAllPistasUtilizadas()
+        {
+            var pistas = await _service.GetPistasUtilizadas();
+            if (pistas == null)
+            {
+                return BadRequest();
+            }
+            return Ok(pistas);
+        }
+
         [HttpGet("get/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

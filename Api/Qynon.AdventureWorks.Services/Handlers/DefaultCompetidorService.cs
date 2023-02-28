@@ -20,6 +20,11 @@ namespace Qynon.AdventureWorks.Service.Handlers
             return await _dao.GetAllAsync();
         }
 
+        public async Task<IEnumerable<Competidor>> GetCompetidorSemCorrida()
+        {
+            return await _dao.GetCompetidoresSemCorrida();
+        }
+
         public async Task<Competidor> GetCompetidor(int id)
         {
            return await _dao.GetById(id);

@@ -21,6 +21,16 @@ namespace Qynon.AdventureWorks.Infrastructure.Data.EfCore
             return await _context.PistasCorrida.ToListAsync();
         }
 
+        public async Task<IEnumerable<PistaCorrida>> GetPistasUtilizadas()
+        {
+            var historicos = await _context.PistasCorrida.Select(p => p.HistoricoCorridas).ToListAsync();
+          
+
+            var listPistaCorrida = await _context.PistasCorrida.ToListAsync();
+            return listPistaCorrida.Where(p => historicos.Contains(p.HistoricoCorridas));
+        }
+
+
         public async Task<PistaCorrida> GetById(int id)
         {
             return await _context.PistasCorrida.FirstOrDefaultAsync(p => p.Id == id);

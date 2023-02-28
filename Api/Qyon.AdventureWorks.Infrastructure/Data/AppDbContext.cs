@@ -21,8 +21,8 @@ namespace Qynon.AdventureWorks.Infrastructure.Data
             modelBuilder.Entity<Competidor>(entity =>
             {
                 entity.ToTable("competidores");
-                
-                entity.HasKey(e => e.Id).HasName("id"); ;
+
+                entity.HasKey(e => e.Id).HasName("id");
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Altura).IsRequired().HasColumnName("altura");
@@ -44,7 +44,7 @@ namespace Qynon.AdventureWorks.Infrastructure.Data
 
             modelBuilder.Entity<PistaCorrida>(entity =>
             {
-                entity.ToTable("PistaCorrida");
+                entity.ToTable("pistacorrida");
 
                 entity.HasKey(p => p.Id).HasName("id");
                 entity.Property(p => p.Id).IsRequired().HasColumnName("id");
@@ -52,28 +52,29 @@ namespace Qynon.AdventureWorks.Infrastructure.Data
                 entity.Property(p => p.Descricao).IsRequired()
                     .HasMaxLength(50)
                     .HasColumnName("descricao");
+
+
+
             });
 
             modelBuilder.Entity<HistoricoCorrida>(entity =>
             {
-                entity.ToTable("HistoricoCorrida");
+                entity.ToTable("historicocorrida");
 
-                entity.HasKey(e => e.Id);
-
-                entity.Property(e => e.CompetidorId).IsRequired();
-                entity.Property(e => e.PistaCorridaId).IsRequired();
+                entity.HasKey(e => e.Id).HasName("id");
+                entity.Property(e => e.Id).HasColumnName("id");
                 entity.Property(e => e.DataCorrida).IsRequired();
                 entity.Property(e => e.TempoGasto).IsRequired();
 
-                entity.HasOne(h => h.Competidor)
-                      .WithMany()
-                      .HasForeignKey(h => h.CompetidorId);
+                entity.HasOne(e => e.PistaCorrida)
+                    .WithMany(p => p.HistoricoCorridas)
+                    .HasForeignKey(e => e.PistaCorridaId)
+                    .HasConstraintName("fk_pista_corrida");
 
-                entity.HasOne(h => h.PistaCorrida)
-                      .WithMany()
-                      .HasForeignKey(h => h.PistaCorrida);
-
-
+                entity.HasOne(e => e.Competidor)
+                    .WithMany(c => c.HistoricoCorridas)
+                    .HasForeignKey(e => e.CompetidorId)
+                    .HasConstraintName("fk_competidor");
             });
 
             base.OnModelCreating(modelBuilder);

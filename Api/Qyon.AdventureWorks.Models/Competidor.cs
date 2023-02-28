@@ -1,4 +1,6 @@
-﻿namespace Qynon.AdventureWorks.Models
+﻿using System.Collections.Generic;
+
+namespace Qynon.AdventureWorks.Models
 {
     public class Competidor
     {
@@ -8,6 +10,6 @@
         public double TemperaturaMediaCorpo { get; set; }
         public double Peso { get; set; }
         public double Altura { get; set; }
-        public HistoricoCorrida HistoricoCorrida { get; set; }
+        public ICollection<HistoricoCorrida> HistoricoCorridas { get; set; }
     }
 }

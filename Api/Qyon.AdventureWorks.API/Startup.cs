@@ -8,6 +8,7 @@ using Qynon.AdventureWorks.Infrastructure.Data;
 using Qynon.AdventureWorks.Infrastructure.Data.EfCore;
 using Qynon.AdventureWorks.Service;
 using Qynon.AdventureWorks.Service.Handlers;
+using Qynon.AdventureWorks.Services;
 
 namespace Qynon.AdventureWorks.API
 {
@@ -28,9 +29,11 @@ namespace Qynon.AdventureWorks.API
             services.AddScoped<IHistoricoCorridaDao, HistoricoCorridaDao>();
 
             //Services
-            services.AddScoped<ICompetidorService, CompetidoresTempoMedioGastoService>();
-            services.AddScoped<ICompetidorService, CompetiorSemCorridaService>();
             services.AddScoped<IPistaCorridaService, PistaUtilizadasService>();
+            services.AddScoped<ICompetidorService, CompetidorSemCorridaService>();
+            services.AddScoped<IHistoricoCorridaService, DefaultHistoricoCorridaService>();
+            services.AddScoped<ICompetidorService, DefaultCompetidorService>();
+            services.AddScoped<IPistaCorridaService, DefaultPistaCorridaService>();
 
 
             //Banco de dados

@@ -2,6 +2,7 @@
 using Qynon.AdventureWorks.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Qynon.AdventureWorks.Infrastructure.Data.EfCore
@@ -17,6 +18,22 @@ namespace Qynon.AdventureWorks.Infrastructure.Data.EfCore
         public async Task<IEnumerable<HistoricoCorrida>> GetAllAsync()
         {
             return await _context.HistoricoCorrida.ToListAsync();
+        }
+        
+        public async Task<IEnumerable<HistoricoCorrida>> GetCompetidoresComTempoMedio()
+        {
+            var historico = await _context.HistoricoCorrida.ToListAsync();
+            var tempoMedio = historico.Average(h => h.TempoGasto);
+            var competidoresTempoMedio = historico
+                .Select(h => new HistoricoCorrida
+                {
+                    CompetidorId = h.CompetidorId,
+                    PistaCorridaId = h.PistaCorridaId,
+                    DataCorrida = h.DataCorrida,
+                    TempoGasto = tempoMedio
+                });
+
+            return competidoresTempoMedio;
         }
 
         public async Task<HistoricoCorrida> GetById(int id)

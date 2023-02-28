@@ -12,6 +12,7 @@ namespace Qynon.AdventureWorks.API.Controllers
     public class CompetidorController : ControllerBase
     {
         private readonly ICompetidorService _service;
+        
 
         public CompetidorController(ICompetidorService service)
         {
@@ -27,6 +28,20 @@ namespace Qynon.AdventureWorks.API.Controllers
         {
             var competidores = await _service.GetCompetidores();
             if(competidores == null)
+            {
+                return BadRequest();
+            }
+            return Ok(competidores);
+        }
+
+        [HttpGet]
+        [Route("semCorrida")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> GetCompetidorSemCorrida()
+        {
+            var competidores = await _service.GetCompetidorSemCorrida();
+            if (competidores == null)
             {
                 return BadRequest();
             }

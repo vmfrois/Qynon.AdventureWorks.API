@@ -1,6 +1,5 @@
 ﻿using Qynon.AdventureWorks.Infrastructure.Data.EfCore;
 using Qynon.AdventureWorks.Models;
-using Qynon.AdventureWorks.Service.Utils;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -24,15 +23,18 @@ namespace Qynon.AdventureWorks.Service.Handlers
             return await _dao.GetById(id);
         }
 
+        public async Task<IEnumerable<PistaCorrida>> GetPistasUtilizadas()
+        {
+            return await _dao.GetPistasUtilizadas();
+        }
+
         public async Task InsertPistaCorrida(PistaCorrida model)
         {
-            ValidacaoCorrida.ValidaDataNoFuturo(model.HistoricoCorrida);
             await _dao.Insert(model);
         }
 
         public async Task UpdatePistaCorrida(int id, PistaCorrida model)
         {
-            ValidacaoCorrida.ValidaDataNoFuturo(model.HistoricoCorrida);
             await _dao.Update(model);
         }
 
@@ -40,6 +42,5 @@ namespace Qynon.AdventureWorks.Service.Handlers
         {
             await _dao.Delete(id);
         }
-
     }
 }
